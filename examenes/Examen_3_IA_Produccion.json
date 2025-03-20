@@ -1,0 +1,459 @@
+{
+  "version": "Examen_3_IA_Produccion",
+  "preguntas": [
+    {
+      "numero": 1,
+      "pregunta": "La implementación de IA en la industria se beneficia significativamente de la infraestructura en la nube porque:",
+      "opciones": {
+        "a": "Incrementa el costo operativo sin ventajas",
+        "b": "Restringe el acceso a recursos críticos",
+        "c": "Genera dependencia exclusiva de servidores locales",
+        "d": "Facilita el escalado y acceso a recursos masivos en tiempo real"
+      }
+    },
+    {
+      "numero": 2,
+      "pregunta": "El Big Data es fundamental en IA ya que:",
+      "opciones": {
+        "a": "Solo incrementa la cantidad de datos sin valor",
+        "b": "Proporciona grandes volúmenes de información para entrenar modelos precisos",
+        "c": "Limita la aplicabilidad de algoritmos de machine learning",
+        "d": "Se utiliza exclusivamente en el sector financiero"
+      }
+    },
+    {
+      "numero": 3,
+      "pregunta": "La utilización de machine learning en la industria permite:",
+      "opciones": {
+        "a": "Realizar mantenimiento sin análisis de datos",
+        "b": "Incrementar costos operativos sin mejoras",
+        "c": "Facilitar la toma de decisiones a través del análisis predictivo",
+        "d": "Eliminar la necesidad de recopilar datos históricos"
+      }
+    },
+    {
+      "numero": 4,
+      "pregunta": "El edge computing en IA se caracteriza por:",
+      "opciones": {
+        "a": "Procesar datos en el dispositivo cercano a la fuente, reduciendo la latencia",
+        "b": "Requerir siempre procesamiento centralizado en la nube",
+        "c": "No ofrecer ventajas frente a la computación en la nube",
+        "d": "Incrementar el tiempo de respuesta en sistemas distribuidos"
+      }
+    },
+    {
+      "numero": 5,
+      "pregunta": "El uso de frameworks de deep learning es crucial en IA porque:",
+      "opciones": {
+        "a": "Complican el desarrollo sin mejorar la eficiencia",
+        "b": "Facilitan la creación y entrenamiento de modelos complejos",
+        "c": "Limitan la flexibilidad en el desarrollo de algoritmos",
+        "d": "Son aplicables solo a tareas de procesamiento de texto"
+      }
+    },
+    {
+      "numero": 6,
+      "pregunta": "La ventaja de integrar algoritmos de optimización en procesos productivos es:",
+      "opciones": {
+        "a": "Generar soluciones sin evaluación de variables",
+        "b": "Aumentar el consumo de recursos sin beneficios",
+        "c": "Obtener soluciones óptimas en entornos complejos",
+        "d": "Limitar la adaptabilidad de los procesos"
+      }
+    },
+    {
+      "numero": 7,
+      "pregunta": "En el contexto de IA, la interoperabilidad entre sistemas permite:",
+      "opciones": {
+        "a": "Aislar soluciones en entornos propietarios",
+        "b": "Reducir la flexibilidad de las aplicaciones",
+        "c": "Integrar diversas plataformas y lenguajes para potenciar la eficiencia",
+        "d": "Eliminar la necesidad de estándares de comunicación"
+      }
+    },
+    {
+      "numero": 8,
+      "pregunta": "La colaboración open source en IA ha contribuido a:",
+      "opciones": {
+        "a": "Restringir el acceso a innovaciones",
+        "b": "Ampliar el desarrollo y compartir soluciones, acelerando el avance tecnológico",
+        "c": "Aumentar la dependencia de software propietario",
+        "d": "Reducir la diversidad de herramientas disponibles"
+      }
+    },
+    {
+      "numero": 9,
+      "pregunta": "La relevancia de los datos en la toma de decisiones empresariales se fundamenta en:",
+      "opciones": {
+        "a": "Su capacidad para generar insights y estrategias basadas en patrones detectados",
+        "b": "La generación de grandes volúmenes sin análisis",
+        "c": "La dependencia exclusiva de datos históricos",
+        "d": "La ausencia de modelos predictivos"
+      }
+    },
+    {
+      "numero": 10,
+      "pregunta": "La escalabilidad en la nube es vital para proyectos de IA porque:",
+      "opciones": {
+        "a": "Incrementa la latencia en el procesamiento",
+        "b": "Restringe la cantidad de recursos disponibles",
+        "c": "Complica la gestión de datos",
+        "d": "Permite ajustar recursos a la demanda, garantizando eficiencia"
+      }
+    },
+    {
+      "numero": 11,
+      "pregunta": "La visión por computadora se aplica principalmente en:",
+      "opciones": {
+        "a": "Análisis de datos textuales",
+        "b": "Optimizar procesos de audio",
+        "c": "Detección de defectos en productos mediante el análisis de imágenes",
+        "d": "Procesamiento de datos numéricos sin estructura"
+      }
+    },
+    {
+      "numero": 12,
+      "pregunta": "El machine learning contribuye a la transformación digital en la industria al:",
+      "opciones": {
+        "a": "Aumentar el uso de procesos manuales",
+        "b": "Automatizar la toma de decisiones y mejorar la eficiencia operativa",
+        "c": "Generar datos sin valor analítico",
+        "d": "Limitar la capacidad de adaptación a nuevos mercados"
+      }
+    },
+    {
+      "numero": 13,
+      "pregunta": "La integración de algoritmos de IA en la gestión de inventarios permite:",
+      "opciones": {
+        "a": "Optimizar la previsión de la demanda y ajustar el stock",
+        "b": "Aumentar la incertidumbre en la reposición",
+        "c": "Eliminar la necesidad de análisis de datos",
+        "d": "Reducir la eficiencia operativa"
+      }
+    },
+    {
+      "numero": 14,
+      "pregunta": "El análisis predictivo en IA se utiliza para:",
+      "opciones": {
+        "a": "Ignorar tendencias y patrones en los datos",
+        "b": "Reducir la automatización de procesos",
+        "c": "Generar soluciones estáticas sin adaptación",
+        "d": "Anticipar eventos y ajustar procesos en tiempo real"
+      }
+    },
+    {
+      "numero": 15,
+      "pregunta": "La optimización de procesos mediante IA se fundamenta en:",
+      "opciones": {
+        "a": "La implementación de algoritmos genéticos para explorar soluciones",
+        "b": "La reducción de datos sin análisis",
+        "c": "El uso de técnicas manuales sin automatización",
+        "d": "La eliminación de variables sin evaluación"
+      }
+    },
+    {
+      "numero": 16,
+      "pregunta": "La combinación de IA y cloud computing favorece:",
+      "opciones": {
+        "a": "La gestión eficiente y escalable de datos en entornos empresariales",
+        "b": "La centralización sin posibilidad de escalar",
+        "c": "La dependencia exclusiva de hardware local",
+        "d": "La disminución de la capacidad de procesamiento"
+      }
+    },
+    {
+      "numero": 17,
+      "pregunta": "La protección de datos en proyectos de IA se aborda mediante:",
+      "opciones": {
+        "a": "El almacenamiento en sistemas abiertos sin cifrado",
+        "b": "La implementación de protocolos de seguridad y cifrado",
+        "c": "La eliminación de normativas de protección",
+        "d": "La dependencia de servidores sin redundancia"
+      }
+    },
+    {
+      "numero": 18,
+      "pregunta": "El machine learning permite a las empresas:",
+      "opciones": {
+        "a": "Ignorar los patrones de comportamiento de los clientes",
+        "b": "Operar sin necesidad de datos",
+        "c": "Reducir la complejidad de los procesos sin mejoras",
+        "d": "Mejorar la toma de decisiones mediante el análisis predictivo"
+      }
+    },
+    {
+      "numero": 19,
+      "pregunta": "El rol de la inteligencia artificial en la competitividad industrial se destaca por:",
+      "opciones": {
+        "a": "Reducir la capacidad de innovación",
+        "b": "Aumentar los costos operativos sin beneficios",
+        "c": "Optimizar procesos y generar ventajas competitivas a partir del análisis de datos",
+        "d": "Limitar la interacción entre sistemas"
+      }
+    },
+    {
+      "numero": 20,
+      "pregunta": "La infraestructura de nube permite a las empresas:",
+      "opciones": {
+        "a": "Restringir el acceso a datos críticos",
+        "b": "Aumentar la latencia en procesos esenciales",
+        "c": "Generar soluciones aisladas sin integración",
+        "d": "Acceder a recursos escalables y flexibles para proyectos de IA"
+      }
+    },
+    {
+      "numero": 21,
+      "pregunta": "Los sistemas de IA en la industria se benefician de la automatización porque:",
+      "opciones": {
+        "a": "Eliminan totalmente la necesidad de supervisión humana",
+        "b": "Reducen errores y mejoran la eficiencia operativa",
+        "c": "Aumentan la complejidad sin resultados significativos",
+        "d": "Limitan la adaptabilidad a nuevos escenarios"
+      }
+    },
+    {
+      "numero": 22,
+      "pregunta": "El preprocesamiento de datos es un paso crítico en proyectos de IA ya que:",
+      "opciones": {
+        "a": "Solo se aplica en modelos simples",
+        "b": "No afecta la calidad del modelo",
+        "c": "Aumenta la complejidad sin beneficio alguno",
+        "d": "Permite limpiar y estructurar los datos para mejorar el rendimiento del modelo"
+      }
+    },
+    {
+      "numero": 23,
+      "pregunta": "El aprendizaje profundo se destaca por:",
+      "opciones": {
+        "a": "Su limitación a tareas sencillas",
+        "b": "No poder procesar grandes conjuntos de datos",
+        "c": "Su capacidad para aprender representaciones complejas mediante redes neuronales multicapa",
+        "d": "La ausencia de mejoras en tareas de reconocimiento"
+      }
+    },
+    {
+      "numero": 24,
+      "pregunta": "La optimización en la industria, mediante IA, ayuda a:",
+      "opciones": {
+        "a": "Generar soluciones sin evaluación de variables",
+        "b": "Reducir la eficiencia operativa",
+        "c": "Eliminar el análisis de procesos",
+        "d": "Ajustar procesos en tiempo real para mejorar la productividad"
+      }
+    },
+    {
+      "numero": 25,
+      "pregunta": "El uso de Cloud Edge en aplicaciones de IA es beneficioso porque:",
+      "opciones": {
+        "a": "Permite procesar datos localmente, reduciendo la latencia",
+        "b": "Centraliza todos los procesos en un servidor remoto",
+        "c": "Elimina la necesidad de procesamiento en la nube",
+        "d": "Aumenta los tiempos de respuesta en aplicaciones en tiempo real"
+      }
+    },
+    {
+      "numero": 26,
+      "pregunta": "La colaboración global en proyectos open source ha permitido:",
+      "opciones": {
+        "a": "Restringir el acceso a innovaciones",
+        "b": "Acelerar el desarrollo de nuevas herramientas y metodologías en IA",
+        "c": "Disminuir la calidad del software desarrollado",
+        "d": "Fomentar la dependencia de software propietario"
+      }
+    },
+    {
+      "numero": 27,
+      "pregunta": "Las redes neuronales son fundamentales en IA debido a:",
+      "opciones": {
+        "a": "Su incapacidad para aprender de grandes volúmenes de datos",
+        "b": "Su aplicabilidad limitada a tareas numéricas",
+        "c": "La detección de patrones complejos en datos y la mejora en el reconocimiento",
+        "d": "El aumento de la complejidad sin aportes prácticos"
+      }
+    },
+    {
+      "numero": 28,
+      "pregunta": "El análisis predictivo en la gestión de la producción se basa en:",
+      "opciones": {
+        "a": "La predicción de tendencias y la optimización de procesos mediante IA",
+        "b": "El uso exclusivo de técnicas manuales",
+        "c": "La ausencia de datos en tiempo real",
+        "d": "La reducción de la capacidad de adaptación"
+      }
+    },
+    {
+      "numero": 29,
+      "pregunta": "La interoperabilidad entre diferentes lenguajes en proyectos de IA es crucial porque:",
+      "opciones": {
+        "a": "Aisla el desarrollo en una sola plataforma",
+        "b": "Facilita la integración de soluciones heterogéneas, aumentando la eficiencia",
+        "c": "Reduce la compatibilidad entre sistemas",
+        "d": "Incrementa los costos sin beneficios"
+      }
+    },
+    {
+      "numero": 30,
+      "pregunta": "El impacto de la inteligencia artificial en el mercado laboral se proyecta en:",
+      "opciones": {
+        "a": "Una reducción en la productividad",
+        "b": "La eliminación completa de empleos en el sector tecnológico",
+        "c": "La estabilidad sin cambios significativos",
+        "d": "Una transformación que exige nuevas habilidades y redefine roles, potenciando la competitividad"
+      }
+    }
+  ],
+  "respuestas_correctas": [
+    { "numero": 1, "respuesta": "d" },
+    { "numero": 2, "respuesta": "b" },
+    { "numero": 3, "respuesta": "c" },
+    { "numero": 4, "respuesta": "a" },
+    { "numero": 5, "respuesta": "b" },
+    { "numero": 6, "respuesta": "d" },
+    { "numero": 7, "respuesta": "c" },
+    { "numero": 8, "respuesta": "b" },
+    { "numero": 9, "respuesta": "a" },
+    { "numero": 10, "respuesta": "d" },
+    { "numero": 11, "respuesta": "c" },
+    { "numero": 12, "respuesta": "b" },
+    { "numero": 13, "respuesta": "a" },
+    { "numero": 14, "respuesta": "d" },
+    { "numero": 15, "respuesta": "a" },
+    { "numero": 16, "respuesta": "a" },
+    { "numero": 17, "respuesta": "b" },
+    { "numero": 18, "respuesta": "d" },
+    { "numero": 19, "respuesta": "c" },
+    { "numero": 20, "respuesta": "a" },
+    { "numero": 21, "respuesta": "b" },
+    { "numero": 22, "respuesta": "d" },
+    { "numero": 23, "respuesta": "c" },
+    { "numero": 24, "respuesta": "a" },
+    { "numero": 25, "respuesta": "a" },
+    { "numero": 26, "respuesta": "b" },
+    { "numero": 27, "respuesta": "c" },
+    { "numero": 28, "respuesta": "a" },
+    { "numero": 29, "respuesta": "b" },
+    { "numero": 30, "respuesta": "d" }
+  ],
+  "banco_explicaciones": [
+    {
+      "numero": 1,
+      "explicacion": "La infraestructura en la nube permite escalar y acceder a recursos masivos en tiempo real, lo que es esencial para entrenar modelos de IA complejos y gestionar grandes volúmenes de datos, como lo respaldan estudios de Gartner."
+    },
+    {
+      "numero": 2,
+      "explicacion": "El Big Data proporciona la base de datos necesaria para que los algoritmos de IA aprendan y generen modelos precisos, lo que es fundamental para la toma de decisiones basada en datos."
+    },
+    {
+      "numero": 3,
+      "explicacion": "El machine learning permite analizar grandes conjuntos de datos para extraer patrones y predecir comportamientos, facilitando la toma de decisiones y la optimización de procesos de forma autónoma."
+    },
+    {
+      "numero": 4,
+      "explicacion": "El edge computing reduce la latencia al procesar los datos localmente, mejorando la respuesta en aplicaciones críticas, una ventaja demostrada en implementaciones IoT."
+    },
+    {
+      "numero": 5,
+      "explicacion": "El uso de frameworks de deep learning facilita la creación y entrenamiento de modelos complejos, permitiendo a los desarrolladores enfocarse en la solución de problemas específicos sin tener que programar algoritmos desde cero."
+    },
+    {
+      "numero": 6,
+      "explicacion": "La integración de algoritmos de optimización permite explorar y encontrar soluciones óptimas en espacios de búsqueda complejos, aumentando la eficiencia de los procesos productivos."
+    },
+    {
+      "numero": 7,
+      "explicacion": "La interoperabilidad entre sistemas posibilita la integración de múltiples plataformas y lenguajes, lo que mejora la eficiencia y la adaptabilidad de las soluciones de IA."
+    },
+    {
+      "numero": 8,
+      "explicacion": "La colaboración open source acelera el desarrollo y permite compartir soluciones, reduciendo barreras tecnológicas y fomentando innovaciones a nivel global."
+    },
+    {
+      "numero": 9,
+      "explicacion": "El uso estratégico de datos permite generar insights y diseñar estrategias basadas en patrones reales, lo que incrementa la competitividad y la capacidad de respuesta en mercados dinámicos."
+    },
+    {
+      "numero": 10,
+      "explicacion": "La escalabilidad en la nube garantiza que los recursos se ajusten según la demanda, permitiendo una operación continua y eficiente en proyectos de IA, especialmente durante picos de carga."
+    },
+    {
+      "numero": 11,
+      "explicacion": "La visión por computadora se utiliza para analizar imágenes y detectar defectos en productos, mejorando el control de calidad y reduciendo errores, según estudios en automatización industrial."
+    },
+    {
+      "numero": 12,
+      "explicacion": "El machine learning automatiza la toma de decisiones mediante el análisis de datos, reduciendo la dependencia de procesos manuales y mejorando la eficiencia operativa, según diversas investigaciones."
+    },
+    {
+      "numero": 13,
+      "explicacion": "La integración de algoritmos de IA en la gestión de inventarios permite predecir la demanda y ajustar el stock de forma óptima, reduciendo costos y mejorando la eficiencia operativa."
+    },
+    {
+      "numero": 14,
+      "explicacion": "El análisis predictivo utiliza datos históricos y en tiempo real para anticipar eventos futuros, permitiendo ajustar las operaciones en función de tendencias observadas y mejorar la planificación estratégica."
+    },
+    {
+      "numero": 15,
+      "explicacion": "La aplicación de IA en la gestión de inventarios ayuda a predecir la demanda, lo que posibilita una reposición eficiente y evita tanto el exceso como la escasez de productos, validado en casos de éxito en logística."
+    },
+    {
+      "numero": 16,
+      "explicacion": "La combinación de IA y cloud computing favorece el procesamiento distribuido y el acceso remoto a recursos, mejorando la flexibilidad y eficiencia de los sistemas empresariales."
+    },
+    {
+      "numero": 17,
+      "explicacion": "La protección de datos en proyectos de IA se refuerza mediante protocolos de seguridad y cifrado, esenciales para salvaguardar la información sensible y cumplir con normativas internacionales."
+    },
+    {
+      "numero": 18,
+      "explicacion": "El machine learning permite que los sistemas aprendan de los datos y mejoren continuamente sin intervención manual, lo que lo diferencia del análisis estadístico tradicional y optimiza la toma de decisiones."
+    },
+    {
+      "numero": 19,
+      "explicacion": "El análisis profundo de datos proporciona insights estratégicos que permiten a las empresas diseñar planes de acción basados en patrones reales, aumentando su competitividad en mercados globalizados."
+    },
+    {
+      "numero": 20,
+      "explicacion": "La infraestructura en la nube ofrece recursos escalables y flexibles, permitiendo el procesamiento intensivo y la gestión de grandes volúmenes de datos, lo que es fundamental para proyectos de IA."
+    },
+    {
+      "numero": 21,
+      "explicacion": "La automatización mediante IA reduce la incidencia de errores humanos y mejora la eficiencia en procesos industriales, una ventaja ampliamente comprobada en estudios de robótica y automatización."
+    },
+    {
+      "numero": 22,
+      "explicacion": "El preprocesamiento de datos es fundamental para limpiar y estructurar la información, lo que resulta en modelos de IA más precisos y robustos."
+    },
+    {
+      "numero": 23,
+      "explicacion": "El aprendizaje profundo permite extraer características complejas de los datos mediante redes neuronales multicapa, mejorando significativamente tareas de reconocimiento y clasificación, tal como lo demuestran diversas investigaciones."
+    },
+    {
+      "numero": 24,
+      "explicacion": "La optimización de procesos a través de IA permite ajustar las operaciones en tiempo real, incrementando la productividad y reduciendo los costos operativos, avalado por estudios en ingeniería industrial."
+    },
+    {
+      "numero": 25,
+      "explicacion": "El uso de Cloud Edge permite procesar datos en el punto de origen, reduciendo la latencia y mejorando la respuesta de aplicaciones críticas, lo cual es esencial en entornos de IA en tiempo real."
+    },
+    {
+      "numero": 26,
+      "explicacion": "La colaboración global en proyectos open source ha acelerado el desarrollo de soluciones de IA, fomentando el intercambio de ideas y la integración de metodologías innovadoras a nivel mundial."
+    },
+    {
+      "numero": 27,
+      "explicacion": "Las redes neuronales son fundamentales para la detección de patrones complejos en grandes volúmenes de datos, mejorando el rendimiento en tareas de reconocimiento y clasificación, como se ha comprobado en múltiples investigaciones."
+    },
+    {
+      "numero": 28,
+      "explicacion": "El análisis predictivo en la gestión de la producción permite anticipar tendencias y ajustar procesos en función de patrones observados, optimizando la eficiencia operativa y reduciendo desperdicios."
+    },
+    {
+      "numero": 29,
+      "explicacion": "La interoperabilidad entre diferentes lenguajes y sistemas facilita la integración de soluciones diversas, potenciando la eficiencia y la innovación en el desarrollo de aplicaciones de IA."
+    },
+    {
+      "numero": 30,
+      "explicacion": "La transformación del mercado laboral impulsada por la IA exige la adquisición de nuevas habilidades y la adaptación de roles, lo que redefine la competitividad industrial y se alinea con tendencias de cambio global."
+    }
+  ]
+}
