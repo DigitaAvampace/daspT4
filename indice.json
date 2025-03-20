@@ -1,17 +1,17 @@
 {
   "examenes": [
     {
-      "id": "examen1",
+      "id": "examen1 Tema 4 IA",
       "titulo": "Examen Integrado IA en Sectores Productivos - Versión 1",
       "ruta": "examenes/Examen_1_IA_Produccion.json"
     },
     {
-      "id": "examen2",
+      "id": "examen2 Tema 4 IA",
       "titulo": "Examen Integrado IA en Sectores Productivos - Versión 2",
       "ruta": "examenes/Examen_2_IA_Produccion.json"
     },
     {
-      "id": "examen3",
+      "id": "examen3 Tema 4 IA",
       "titulo": "Examen Integrado IA en Sectores Productivos - Versión 3",
       "ruta": "examenes/Examen_3_IA_Produccion.json"
     }
