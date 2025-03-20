@@ -14,8 +14,8 @@
     .opciones {
       display: flex;
       flex-direction: column;
-      gap: 10px; /* Espacio entre cada opción */
-      background-color: #e0e0e0; /* Fondo gris claro */
+      gap: 10px;
+      background-color: #e0e0e0;
       padding: 10px;
     }
     .opciones label {
@@ -45,11 +45,11 @@
   <div id="revisarErrores" style="display:none;"></div>
   
   <script>
-    // URL del archivo indice.json
-    const urlIndice = "https://raw.githubusercontent.com/DigitaAvampace/daspt4/refs/heads/main/indice.json";
+    // URL del archivo índice RAW en GitHub
+    const urlIndice = "https://raw.githubusercontent.com/DigitaAvampace/daspt4/main/indice.json";
     
-    // Base URL para cargar los exámenes (ajusta si es necesario)
-    const baseUrl = "https://raw.githubusercontent.com/DigitaAvampace/daspt4/refs/heads/main/";
+    // Base URL para cargar los exámenes RAW
+    const baseUrl = "https://raw.githubusercontent.com/DigitaAvampace/daspt4/main/";
     
     let examenesData = null;       // Array de exámenes desde el índice
     let examenActual = null;       // JSON del examen seleccionado
@@ -135,27 +135,3 @@
       htmlResultados = `<p>Has acertado ${correctas} de ${total} preguntas.</p>` + htmlResultados;
       document.getElementById("resultado").innerHTML = htmlResultados;
       document.getElementById("revisarErrores").style.display = "block";
-      document.getElementById("revisarErrores").innerHTML = "<h2>Revisión de Preguntas y Explicaciones</h2>" + htmlResultados;
-    }
-    
-    // Cargar el archivo índice y mostrar el listado de exámenes
-    fetch(urlIndice)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('No se pudo cargar el índice.');
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (!data.examenes) {
-          throw new Error('El JSON no tiene la propiedad "examenes".');
-        }
-        examenesData = data.examenes;
-        mostrarListadoExamenes();
-      })
-      .catch(error => {
-        document.body.innerHTML = '<p>Error al cargar el índice: ' + error.message + '</p>';
-      });
-  </script>
-</body>
-</html>
