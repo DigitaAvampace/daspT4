@@ -138,21 +138,23 @@
     }
     
     // Cargar el índice de exámenes al iniciar la página
-    fetch(urlIndice)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('No se pudo cargar el índice de exámenes.');
-        }
-        return response.json();
-      })
-      .then(data => {
-        examenesData = data;
-        mostrarListadoExamenes();
-      })
-      .catch(err => {
-        console.error("Error al cargar el índice de exámenes:", err);
-        document.getElementById("examenSeleccion").innerHTML = "<p>Error al cargar el índice de exámenes: " + err.message + "</p>";
-      });
+   fetch(urlIndice)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('No se pudo cargar el índice de exámenes.');
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Si el JSON tiene la propiedad "examenes", usarla; de lo contrario, usar data directamente.
+    examenesData = data.examenes || data;
+    mostrarListadoExamenes();
+  })
+  .catch(err => {
+    console.error("Error al cargar el índice de exámenes:", err);
+    document.getElementById("examenSeleccion").innerHTML = "<p>Error al cargar el índice de exámenes: " + err.message + "</p>";
+  });
+
   </script>
 </body>
 </html>
