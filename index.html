@@ -48,7 +48,7 @@
     // URL del archivo índice RAW en GitHub
     const urlIndice = "https://raw.githubusercontent.com/DigitaAvampace/daspT4/main/indice.json";
     
-    // Base URL para cargar los exámenes RAW (unificada con el índice)
+    // Base URL para cargar los exámenes RAW (sin slash extra)
     const baseUrl = "https://raw.githubusercontent.com/DigitaAvampace/daspT4/main";
     
     let examenesData = null;       // Array de exámenes desde el índice
@@ -70,6 +70,7 @@
     // Función para cargar el examen seleccionado
     function cargarExamen(examen) {
       const urlExamen = baseUrl + examen.ruta;
+      console.log("Cargando examen desde:", urlExamen);
       fetch(urlExamen)
         .then(response => {
           if (!response.ok) {
@@ -138,23 +139,22 @@
     }
     
     // Cargar el índice de exámenes al iniciar la página
-   fetch(urlIndice)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('No se pudo cargar el índice de exámenes.');
-    }
-    return response.json();
-  })
-  .then(data => {
-    // Si el JSON tiene la propiedad "examenes", usarla; de lo contrario, usar data directamente.
-    examenesData = data.examenes || data;
-    mostrarListadoExamenes();
-  })
-  .catch(err => {
-    console.error("Error al cargar el índice de exámenes:", err);
-    document.getElementById("examenSeleccion").innerHTML = "<p>Error al cargar el índice de exámenes: " + err.message + "</p>";
-  });
-
+    fetch(urlIndice)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('No se pudo cargar el índice de exámenes.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Si el JSON tiene la propiedad "examenes", usarla; de lo contrario, usar data directamente.
+        examenesData = data.examenes || data;
+        mostrarListadoExamenes();
+      })
+      .catch(err => {
+        console.error("Error al cargar el índice de exámenes:", err);
+        document.getElementById("examenSeleccion").innerHTML = "<p>Error al cargar el índice de exámenes: " + err.message + "</p>";
+      });
   </script>
 </body>
 </html>
