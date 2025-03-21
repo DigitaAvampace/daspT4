@@ -44,126 +44,136 @@
   <!-- Sección para revisar explicaciones -->
   <div id="revisarErrores" style="display:none;"></div>
   
-  <script>
-    // URL del archivo índice RAW en GitHub
-    const urlIndice = "https://raw.githubusercontent.com/DigitaAvampace/daspT4/main/indice.json";
-    
-    // Base URL para cargar los exámenes RAW (sin slash extra)
-    const baseUrl = "https://raw.githubusercontent.com/DigitaAvampace/daspT4/";
-    
-    let examenesData = null;       // Array de exámenes desde el índice
-    let examenActual = null;       // JSON del examen seleccionado
-    
-    // Función para mostrar el listado de exámenes disponibles
-    function mostrarListadoExamenes() {
-      const div = document.getElementById("examenSeleccion");
-      div.innerHTML = "<h2>Seleccione un examen:</h2>";
-      examenesData.forEach(examen => {
-        const btn = document.createElement("button");
-        btn.textContent = examen.titulo;
-        btn.style.marginRight = "10px";
-        btn.addEventListener("click", () => cargarExamen(examen));
-        div.appendChild(btn);
-      });
-    }
-    
-    // Función para cargar el examen seleccionado
-    function cargarExamen(examen) {
-      // Construir la URL; si la ruta en el índice tiene slash inicial, no hay problema
-      const urlExamen = baseUrl + examen.ruta;
-      console.log("Intentando cargar el examen desde:", urlExamen);
-      fetch(urlExamen)
-        .then(response => {
-          console.log("Respuesta del servidor:", response);
-          if (!response.ok) {
-            throw new Error('No se pudo cargar el examen. Verifica la URL RAW.');
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log("Datos del examen:", data);
-          examenActual = data;
-          mostrarExamen(data);
-        })
-        .catch(err => {
-          console.error("Error al cargar el examen:", err);
-          document.getElementById("contenidoExamen").innerHTML = "<p>Error: " + err.message + "</p>";
-        });
-    }
-    
-    // Función para mostrar el examen en pantalla
-    function mostrarExamen(examen) {
-      const contenedor = document.getElementById("contenidoExamen");
-      contenedor.style.display = "block";
-      contenedor.innerHTML = "";
-      if (!examen.preguntas) {
-        contenedor.innerHTML = "<p>Error: El examen no tiene la propiedad 'preguntas'.</p>";
-        console.error("El JSON del examen no tiene la propiedad 'preguntas'.");
-        return;
-      }
-      examen.preguntas.forEach(pregunta => {
-        const divPregunta = document.createElement("div");
-        divPregunta.className = "pregunta";
-        let html = `<strong>${pregunta.numero}. ${pregunta.pregunta}</strong><br>`;
-        html += `<div class="opciones">`;
-        for (let op in pregunta.opciones) {
-          html += `<label><input type="radio" name="pregunta${pregunta.numero}" value="${op}"> (${op}) ${pregunta.opciones[op]}</label>`;
-        }
-        html += `</div>`;
-        divPregunta.innerHTML = html;
-        contenedor.appendChild(divPregunta);
-      });
-      // Agregar botón para enviar el examen
-      const btnEnviar = document.createElement("button");
-      btnEnviar.textContent = "Enviar Examen";
-      btnEnviar.addEventListener("click", enviarExamen);
-      contenedor.appendChild(btnEnviar);
-    }
-    
-    // Función para enviar el examen y mostrar resultados y explicaciones
-   function enviarExamen() {
-  if (!examenActual) return;
-  let total = examenActual.preguntas.length;
-  let correctas = 0;
-  let htmlResultados = "<h2>Resultados</h2>";
-  examenActual.preguntas.forEach(pregunta => {
-    const respuestaElem = document.querySelector(`input[name="pregunta${pregunta.numero}"]:checked`);
-    const respuestaUsuario = respuestaElem ? respuestaElem.value : "No respondida";
-    const isCorrecta = (respuestaUsuario === pregunta.respuesta_correcta);
-    if (isCorrecta) correctas++;
-    const respuestaCorrectaTexto = pregunta.opciones[pregunta.respuesta_correcta];
-    const respuestaUsuarioTexto = pregunta.opciones[respuestaUsuario] || "No respondida";
-    htmlResultados += `<div>
-      <strong>Pregunta ${pregunta.numero}:</strong> ${pregunta.pregunta}<br>
-      <strong>Tu respuesta:</strong> (${respuestaUsuario}) ${respuestaUsuarioTexto}<br>
-      <strong>Respuesta correcta:</strong> (${pregunta.respuesta_correcta}) ${respuestaCorrectaTexto}<br>
-      <strong>Resultado:</strong> ${isCorrecta ? "<span style='color:green;'>Correcta</span>" : "<span style='color:red;'>Incorrecta</span>"}<br>
-      <strong>Explicación:</strong> ${pregunta.explicacion}
-    </div><hr>`;
-  });
-  htmlResultados = `<p>Has acertado ${correctas} de ${total} preguntas.</p>` + htmlResultados;
-  document.getElementById("resultado").innerHTML = htmlResultados;
-}
-
-    
-    // Cargar el índice de exámenes al iniciar la página
-    fetch(urlIndice)
+ <script>
+  // URL del archivo índice RAW en GitHub
+  const urlIndice = "https://raw.githubusercontent.com/DigitaAvampace/daspT4/main/indice.json";
+  
+  // Base URL para cargar los exámenes RAW (sin slash extra)
+  const baseUrl = "https://raw.githubusercontent.com/DigitaAvampace/daspT4/";
+  
+  let examenesData = null;       // Array de exámenes desde el índice
+  let examenActual = null;       // JSON del examen seleccionado
+  
+  // Función para mostrar el listado de exámenes disponibles
+  function mostrarListadoExamenes() {
+    const div = document.getElementById("examenSeleccion");
+    div.innerHTML = "<h2>Seleccione un examen:</h2>";
+    examenesData.forEach(examen => {
+      const btn = document.createElement("button");
+      btn.textContent = examen.titulo;
+      btn.style.marginRight = "10px";
+      btn.addEventListener("click", () => cargarExamen(examen));
+      div.appendChild(btn);
+    });
+  }
+  
+  // Función para cargar el examen seleccionado
+  function cargarExamen(examen) {
+    // Construir la URL; si la ruta en el índice tiene slash inicial, no hay problema
+    const urlExamen = baseUrl + examen.ruta;
+    console.log("Intentando cargar el examen desde:", urlExamen);
+    fetch(urlExamen)
       .then(response => {
+        console.log("Respuesta del servidor:", response);
         if (!response.ok) {
-          throw new Error('No se pudo cargar el índice de exámenes.');
+          throw new Error('No se pudo cargar el examen. Verifica la URL RAW.');
         }
         return response.json();
       })
       .then(data => {
-        // Dependiendo de la estructura, usar data o data.examenes
-        examenesData = data.examenes || data;
-        console.log("Índice de exámenes cargado:", examenesData);
-        mostrarListadoExamenes();
+        console.log("Datos del examen:", data);
+        examenActual = data;
+        mostrarExamen(data);
       })
       .catch(err => {
-        console.error("Error al cargar el índice de exámenes:", err);
-        document.getElementById("examenSeleccion").innerHTML = "<p>Error al cargar el índice de exámenes: " + err.message + "</p>";
+        console.error("Error al cargar el examen:", err);
+        document.getElementById("contenidoExamen").innerHTML = "<p>Error: " + err.message + "</p>";
       });
-  </script>
+  }
+  
+  // Función para mostrar el examen en pantalla
+  function mostrarExamen(examen) {
+    const contenedor = document.getElementById("contenidoExamen");
+    contenedor.style.display = "block";
+    contenedor.innerHTML = "";
+    if (!examen.preguntas) {
+      contenedor.innerHTML = "<p>Error: El examen no tiene la propiedad 'preguntas'.</p>";
+      console.error("El JSON del examen no tiene la propiedad 'preguntas'.");
+      return;
+    }
+    examen.preguntas.forEach(pregunta => {
+      const divPregunta = document.createElement("div");
+      divPregunta.className = "pregunta";
+      let html = `<strong>${pregunta.numero}. ${pregunta.pregunta}</strong><br>`;
+      html += `<div class="opciones">`;
+      for (let op in pregunta.opciones) {
+        html += `<label><input type="radio" name="pregunta${pregunta.numero}" value="${op}"> (${op}) ${pregunta.opciones[op]}</label>`;
+      }
+      html += `</div>`;
+      divPregunta.innerHTML = html;
+      contenedor.appendChild(divPregunta);
+    });
+    // Agregar botón para enviar el examen
+    const btnEnviar = document.createElement("button");
+    btnEnviar.textContent = "Enviar Examen";
+    btnEnviar.addEventListener("click", enviarExamen);
+    contenedor.appendChild(btnEnviar);
+  }
+  
+  // Función para enviar el examen y mostrar resultados y explicaciones
+  function enviarExamen() {
+    if (!examenActual) return;
+    let total = examenActual.preguntas.length;
+    let correctas = 0;
+    let htmlResultados = "<h2>Resultados</h2>";
+    
+    examenActual.preguntas.forEach(pregunta => {
+      // Buscar la respuesta correcta correspondiente en el array 'respuestas_correctas'
+      const respuestaObj = examenActual.respuestas_correctas.find(item => item.numero === pregunta.numero);
+      const respuestaCorrecta = respuestaObj ? respuestaObj.respuesta : null;
+      
+      // Buscar la explicación correspondiente en el array 'banco_explicaciones'
+      const explicacionObj = examenActual.banco_explicaciones.find(item => item.numero === pregunta.numero);
+      const explicacionText = explicacionObj ? explicacionObj.explicacion : "";
+      
+      const respuestaElem = document.querySelector(`input[name="pregunta${pregunta.numero}"]:checked`);
+      const respuestaUsuario = respuestaElem ? respuestaElem.value : "No respondida";
+      const isCorrecta = (respuestaUsuario === respuestaCorrecta);
+      if (isCorrecta) correctas++;
+      const respuestaCorrectaTexto = pregunta.opciones[respuestaCorrecta];
+      const respuestaUsuarioTexto = pregunta.opciones[respuestaUsuario] || "No respondida";
+      htmlResultados += `<div>
+        <strong>Pregunta ${pregunta.numero}:</strong> ${pregunta.pregunta}<br>
+        <strong>Tu respuesta:</strong> (${respuestaUsuario}) ${respuestaUsuarioTexto}<br>
+        <strong>Respuesta correcta:</strong> (${respuestaCorrecta}) ${respuestaCorrectaTexto}<br>
+        <strong>Resultado:</strong> ${isCorrecta ? "<span style='color:green;'>Correcta</span>" : "<span style='color:red;'>Incorrecta</span>"}<br>
+        <strong>Explicación:</strong> ${explicacionText}
+      </div><hr>`;
+    });
+    
+    htmlResultados = `<p>Has acertado ${correctas} de ${total} preguntas.</p>` + htmlResultados;
+    document.getElementById("resultado").innerHTML = htmlResultados;
+  }
+  
+  // Cargar el índice de exámenes al iniciar la página
+  fetch(urlIndice)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('No se pudo cargar el índice de exámenes.');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Dependiendo de la estructura, usar data o data.examenes
+      examenesData = data.examenes || data;
+      console.log("Índice de exámenes cargado:", examenesData);
+      mostrarListadoExamenes();
+    })
+    .catch(err => {
+      console.error("Error al cargar el índice de exámenes:", err);
+      document.getElementById("examenSeleccion").innerHTML = "<p>Error al cargar el índice de exámenes: " + err.message + "</p>";
+    });
+</script>
+
 </body>
 </html>
