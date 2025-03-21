@@ -41,26 +41,24 @@
   <!-- Sección para mostrar resultados -->
   <div id="resultado"></div>
   
-  <!-- Sección para revisar explicaciones (opcional) -->
+  <!-- Sección para revisión de errores (opcional) -->
   <div id="revisarErrores" style="display:none;"></div>
   
   <script>
-    // URL del archivo índice RAW en GitHub
-    const urlIndice = "https://raw.githubusercontent.com/DigitaAvampace/daspT4/main/indice.json";
+    // URL RAW del archivo índice en GitHub (asegúrate de que el repositorio sea público)
+    const urlExamenIndice = 'https://raw.githubusercontent.com/DigitaAvampace/daspT4/main/indice.json';
     
-    // Base URL para cargar los exámenes RAW (sin slash extra)
-    const baseUrl = "https://raw.githubusercontent.com/DigitaAvampace/daspT4/";
-    
-    let examenesData = null;       // Array de exámenes desde el índice
-    let examenActual = null;       // JSON del examen seleccionado
+    let examenesData = null;       // Array de exámenes (con metadata)
+    let examenActual = null;       // JSON completo del examen seleccionado (con preguntas, respuestas_correctas, banco_explicaciones)
     
     // Función para mostrar el listado de exámenes disponibles
     function mostrarListadoExamenes() {
       const div = document.getElementById("examenSeleccion");
       div.innerHTML = "<h2>Seleccione un examen:</h2>";
       examenesData.forEach(examen => {
+        // Usa la propiedad adecuada, por ejemplo, examen.titulo o examen.version
         const btn = document.createElement("button");
-        btn.textContent = examen.titulo;
+        btn.textContent = examen.titulo; // o examen.version, según corresponda
         btn.style.marginRight = "10px";
         btn.addEventListener("click", () => cargarExamen(examen));
         div.appendChild(btn);
@@ -69,19 +67,22 @@
     
     // Función para cargar el examen seleccionado
     function cargarExamen(examen) {
-      // Construir la URL; si la ruta en el índice tiene slash inicial, no hay problema
-      const urlExamen = baseUrl + examen.ruta;
+      const baseUrl = "https://raw.githubusercontent.com/DigitaAvampace/daspT4/main/";
+      // Eliminar la barra inicial de la ruta si existe
+      let rutaExamen = examen.ruta;
+      if (rutaExamen.startsWith("/")) {
+        rutaExamen = rutaExamen.substring(1);
+      }
+      const urlExamen = baseUrl + rutaExamen;
       console.log("Intentando cargar el examen desde:", urlExamen);
       fetch(urlExamen)
         .then(response => {
-          console.log("Respuesta del servidor:", response);
           if (!response.ok) {
             throw new Error('No se pudo cargar el examen. Verifica la URL RAW.');
           }
           return response.json();
         })
         .then(data => {
-          console.log("Datos del examen:", data);
           examenActual = data;
           mostrarExamen(data);
         })
@@ -128,11 +129,10 @@
       let htmlResultados = "<h2>Resultados</h2>";
       
       examenActual.preguntas.forEach(pregunta => {
-        // Buscar la respuesta correcta correspondiente en el array 'respuestas_correctas'
+        // Buscar la respuesta correcta en el array 'respuestas_correctas'
         const respuestaObj = examenActual.respuestas_correctas.find(item => item.numero === pregunta.numero);
         const respuestaCorrecta = respuestaObj ? respuestaObj.respuesta : null;
-        
-        // Buscar la explicación correspondiente en el array 'banco_explicaciones'
+        // Buscar la explicación en el array 'banco_explicaciones'
         const explicacionObj = examenActual.banco_explicaciones.find(item => item.numero === pregunta.numero);
         const explicacionText = explicacionObj ? explicacionObj.explicacion : "";
         
@@ -140,12 +140,11 @@
         const respuestaUsuario = respuestaElem ? respuestaElem.value : "No respondida";
         const isCorrecta = (respuestaUsuario === respuestaCorrecta);
         if (isCorrecta) correctas++;
-        const respuestaCorrectaTexto = pregunta.opciones[respuestaCorrecta];
-        const respuestaUsuarioTexto = pregunta.opciones[respuestaUsuario] || "No respondida";
+        
         htmlResultados += `<div>
           <strong>Pregunta ${pregunta.numero}:</strong> ${pregunta.pregunta}<br>
-          <strong>Tu respuesta:</strong> (${respuestaUsuario}) ${respuestaUsuarioTexto}<br>
-          <strong>Respuesta correcta:</strong> (${respuestaCorrecta}) ${respuestaCorrectaTexto}<br>
+          <strong>Tu respuesta:</strong> (${respuestaUsuario}) ${pregunta.opciones[respuestaUsuario] || "No respondida"}<br>
+          <strong>Respuesta correcta:</strong> (${respuestaCorrecta}) ${pregunta.opciones[respuestaCorrecta]}<br>
           <strong>Resultado:</strong> ${isCorrecta ? "<span style='color:green;'>Correcta</span>" : "<span style='color:red;'>Incorrecta</span>"}<br>
           <strong>Explicación:</strong> ${explicacionText}
         </div><hr>`;
@@ -153,25 +152,28 @@
       
       htmlResultados = `<p>Has acertado ${correctas} de ${total} preguntas.</p>` + htmlResultados;
       document.getElementById("resultado").innerHTML = htmlResultados;
+      // Mostrar también la sección de revisión con explicaciones completas
+      document.getElementById("revisarErrores").style.display = "block";
+      document.getElementById("revisarErrores").innerHTML = "<h2>Revisión de Preguntas y Explicaciones</h2>" + htmlResultados;
     }
     
-    // Cargar el índice de exámenes al iniciar la página
-    fetch(urlIndice)
+    // Cargar el archivo índice
+    fetch(urlExamenIndice)
       .then(response => {
         if (!response.ok) {
-          throw new Error('No se pudo cargar el índice de exámenes.');
+          throw new Error('No se pudo cargar el índice. Revisa que uses la URL RAW y que el repositorio sea público.');
         }
         return response.json();
       })
       .then(data => {
-        // Dependiendo de la estructura, usar data o data.examenes
-        examenesData = data.examenes || data;
-        console.log("Índice de exámenes cargado:", examenesData);
+        if (!data.examenes) {
+          throw new Error('El JSON no tiene la propiedad "examenes".');
+        }
+        examenesData = data.examenes;
         mostrarListadoExamenes();
       })
-      .catch(err => {
-        console.error("Error al cargar el índice de exámenes:", err);
-        document.getElementById("examenSeleccion").innerHTML = "<p>Error al cargar el índice de exámenes: " + err.message + "</p>";
+      .catch(error => {
+        document.body.innerHTML = '<p>Error al cargar el índice: ' + error.message + '</p>';
       });
   </script>
 </body>
