@@ -121,30 +121,30 @@
     }
     
     // Función para enviar el examen y mostrar resultados y explicaciones
-    function enviarExamen() {
-      if (!examenActual) return;
-      let total = examenActual.preguntas.length;
-      let correctas = 0;
-      let htmlResultados = "<h2>Resultados</h2>";
-      examenActual.preguntas.forEach(pregunta => {
-        const respuestaElem = document.querySelector(`input[name="pregunta${pregunta.numero}"]:checked`);
-        const respuestaUsuario = respuestaElem ? respuestaElem.value : "No respondida";
-        const respuestaCorrectaObj = examenActual.respuestas_correctas.find(r => r.numero === pregunta.numero);
-        const respuestaCorrecta = respuestaCorrectaObj ? respuestaCorrectaObj.respuesta : "";
-        const isCorrecta = (respuestaUsuario === respuestaCorrecta);
-        if (isCorrecta) correctas++;
-        const explicacionObj = examenActual.banco_explicaciones.find(e => e.numero === pregunta.numero);
-        const explicacionTexto = explicacionObj ? explicacionObj.explicacion : "";
-        htmlResultados += `<div>
-          <strong>Pregunta ${pregunta.numero}:</strong> Tu respuesta: (${respuestaUsuario}) ${pregunta.opciones[respuestaUsuario] || ""}
-          - ${isCorrecta ? "<span style='color:green;'>Correcta</span>" : "<span style='color:red;'>Incorrecta</span>"}
-          <div class="explicacion"><em>Explicación:</em> ${explicacionTexto}</div>
-        </div><hr>`;
-      });
-      htmlResultados = `<p>Has acertado ${correctas} de ${total} preguntas.</p>` + htmlResultados;
-      document.getElementById("resultado").innerHTML = htmlResultados;
-      document.getElementById("revisarErrores").style.display = "block";
-    }
+   function enviarExamen() {
+  if (!examenActual) return;
+  let total = examenActual.preguntas.length;
+  let correctas = 0;
+  let htmlResultados = "<h2>Resultados</h2>";
+  examenActual.preguntas.forEach(pregunta => {
+    const respuestaElem = document.querySelector(`input[name="pregunta${pregunta.numero}"]:checked`);
+    const respuestaUsuario = respuestaElem ? respuestaElem.value : "No respondida";
+    const isCorrecta = (respuestaUsuario === pregunta.respuesta_correcta);
+    if (isCorrecta) correctas++;
+    const respuestaCorrectaTexto = pregunta.opciones[pregunta.respuesta_correcta];
+    const respuestaUsuarioTexto = pregunta.opciones[respuestaUsuario] || "No respondida";
+    htmlResultados += `<div>
+      <strong>Pregunta ${pregunta.numero}:</strong> ${pregunta.pregunta}<br>
+      <strong>Tu respuesta:</strong> (${respuestaUsuario}) ${respuestaUsuarioTexto}<br>
+      <strong>Respuesta correcta:</strong> (${pregunta.respuesta_correcta}) ${respuestaCorrectaTexto}<br>
+      <strong>Resultado:</strong> ${isCorrecta ? "<span style='color:green;'>Correcta</span>" : "<span style='color:red;'>Incorrecta</span>"}<br>
+      <strong>Explicación:</strong> ${pregunta.explicacion}
+    </div><hr>`;
+  });
+  htmlResultados = `<p>Has acertado ${correctas} de ${total} preguntas.</p>` + htmlResultados;
+  document.getElementById("resultado").innerHTML = htmlResultados;
+}
+
     
     // Cargar el índice de exámenes al iniciar la página
     fetch(urlIndice)
