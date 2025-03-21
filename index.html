@@ -49,7 +49,7 @@
     const urlIndice = "https://raw.githubusercontent.com/DigitaAvampace/daspT4/main/indice.json";
     
     // Base URL para cargar los exámenes RAW (sin slash extra)
-    const baseUrl = "https://raw.githubusercontent.com/DigitaAvampace/daspT4/main";
+    const baseUrl = "https://raw.githubusercontent.com/DigitaAvampace/daspT4/main/";
     
     let examenesData = null;       // Array de exámenes desde el índice
     let examenActual = null;       // JSON del examen seleccionado
@@ -69,16 +69,19 @@
     
     // Función para cargar el examen seleccionado
     function cargarExamen(examen) {
+      // Construir la URL; si la ruta en el índice tiene slash inicial, no hay problema
       const urlExamen = baseUrl + examen.ruta;
-      console.log("Cargando examen desde:", urlExamen);
+      console.log("Intentando cargar el examen desde:", urlExamen);
       fetch(urlExamen)
         .then(response => {
+          console.log("Respuesta del servidor:", response);
           if (!response.ok) {
             throw new Error('No se pudo cargar el examen. Verifica la URL RAW.');
           }
           return response.json();
         })
         .then(data => {
+          console.log("Datos del examen:", data);
           examenActual = data;
           mostrarExamen(data);
         })
@@ -93,6 +96,11 @@
       const contenedor = document.getElementById("contenidoExamen");
       contenedor.style.display = "block";
       contenedor.innerHTML = "";
+      if (!examen.preguntas) {
+        contenedor.innerHTML = "<p>Error: El examen no tiene la propiedad 'preguntas'.</p>";
+        console.error("El JSON del examen no tiene la propiedad 'preguntas'.");
+        return;
+      }
       examen.preguntas.forEach(pregunta => {
         const divPregunta = document.createElement("div");
         divPregunta.className = "pregunta";
@@ -147,8 +155,9 @@
         return response.json();
       })
       .then(data => {
-        // Si el JSON tiene la propiedad "examenes", usarla; de lo contrario, usar data directamente.
+        // Dependiendo de la estructura, usar data o data.examenes
         examenesData = data.examenes || data;
+        console.log("Índice de exámenes cargado:", examenesData);
         mostrarListadoExamenes();
       })
       .catch(err => {
